@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 /***** Components *****/
 import { AppComponent } from './app.component';
@@ -37,6 +38,9 @@ import { NewsActions } from './store/actions/news.actions';
     HttpModule,
     RouterModule.forRoot(routes),
     StoreModule.provideStore({ sections, news }),
+    StoreDevtoolsModule.instrumentOnlyWithExtension({
+      maxAge: 5
+    }),
   ],
   providers: [NewsService, NewsActions],
   bootstrap: [AppComponent]
