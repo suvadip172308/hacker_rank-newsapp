@@ -36,7 +36,7 @@ import { NewsActions } from './store/actions/news.actions';
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    StoreModule.provideStore({ sections, news })
+    StoreModule.provideStore({ sections, news }),
   ],
   providers: [NewsService, NewsActions],
   bootstrap: [AppComponent]

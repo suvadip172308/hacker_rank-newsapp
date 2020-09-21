@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { sections } from '../../store/reducers/sections.reducer';
-// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-sections',
@@ -10,11 +10,12 @@ import { sections } from '../../store/reducers/sections.reducer';
 })
 export class SectionsComponent implements OnInit {
 
-  sectionList: any;
+  sectionList: any = [];
 
-  constructor() {
+  constructor(private store: Store<string>) {
   }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.store.select('sections').subscribe(sections => this.sectionList = sections);
+  }
 }

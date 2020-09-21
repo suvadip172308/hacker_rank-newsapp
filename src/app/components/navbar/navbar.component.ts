@@ -15,14 +15,18 @@ export class NavbarComponent implements OnInit {
   subsections: string[];
   response: Object[];
   constructor(
-    private store: Store<any>,
+    private store: Store<News[]>,
     private newsActions: NewsActions
   ) { }
 
   ngOnInit() {
+    this.store.select('news').subscribe(news => {
+      const allSubsection = news['newsList'].map((item: string) => item['subsection']);
+      this.subsections = allSubsection.filter((subsection, item, array) => array.indexOf(subsection) === item);
+    })
   }
 
   dispatchAction($event: string) {
+    this.store.dispatch(new NewsActions().FilterSubsection($event));
   }
-
 }

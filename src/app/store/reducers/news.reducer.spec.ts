@@ -150,7 +150,7 @@ describe('The news reducer', () => {
     ];
 
     it('should load news, when LOAD_SECTION_NEWS dispatched', async() => {
-        // const initialState = { newsList: [], filter: '' };
+        //const initialState = { newsList: [], filter: '' };
         const createAction = { type: fromNewsReducer.LOAD_SECTION_NEWS, payload: mockNewsList };
         const result = news(fromNewsReducer.initialState, createAction);
 
